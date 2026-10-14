@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InternNova | Next-Gen Remote Internships & Practical Tech Skills</title>
+  <meta name="description" content="Redesigned InternNova portal - Virtual mentor-led internships, capstone project builds, and verified digital credentials for ambitious engineers.">
+  
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#1e1b4b',
+            },
+            accent: {
+              500: '#8b5cf6',
+              600: '#7c3aed',
+            }
+          },
+          boxShadow: {
+            'subtle': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
+            'card': '0 10px 25px -5px rgba(79, 70, 229, 0.07), 0 8px 10px -6px rgba(79, 70, 229, 0.04)',
+            'glow': '0 0 25px -3px rgba(99, 102, 241, 0.35)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom clean glassmorphism & gradients */
+    .bg-mesh {
+      background-color: #fafbfd;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.07) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(238, 242, 255, 0.5) 0px, transparent 60%),
+        radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
+    }
+    .badge-gradient {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    }
+    .border-gradient-hover {
+      transition: all 0.3s ease;
+    }
+    .border-gradient-hover:hover {
+      border-color: #818cf8;
+      box-shadow: 0 12px 28px -6px rgba(99, 102, 241, 0.16);
+      transform: translateY(-2px);
+    }
+    /* Hide scrollbars */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-mesh text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- =========================================================================
+       1. Top Announcement Bar
+  ========================================================================== -->
+  <aside aria-label="Announcement" class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white text-xs sm:text-sm py-2 px-4 relative z-50 border-b border-indigo-900/40">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center space-x-2">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span>
+          BATCH-06 ENROLLING
+        </span>
+        <span class="text-slate-300 hidden sm:inline">|</span>
+        <span class="text-slate-200 font-medium">Limited Seats for Spring Cohort. Fast-track approval active!</span>
+      </div>
+      <div class="flex items-center space-x-3 text-xs">
+        <span class="text-indigo-200 hidden md:inline"><i class="fa-solid fa-clock mr-1 text-indigo-400"></i> Applications close in 4 days</span>
+        <a href="#domains" class="text-amber-300 font-semibold hover:text-white transition-colors flex items-center gap-1 group">
+          Apply Now <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-0.5 transition-transform"></i>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       2. Sticky Modern Navbar
+  ========================================================================== -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-all duration-300 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="w-11 h-11 rounded-xl badge-gradient flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-cube text-xl"></i>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5">
+            <span class="font-extrabold text-2xl tracking-tight bg-gradient-to-r from-slate-950 via-indigo-950 to-indigo-700 bg-clip-text text-transparent">InternNova</span>
+            <span class="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-indigo-50 text-indigo-600 border border-indigo-200/60">Official</span>
+          </div>
+          <span class="text-[10px] font-semibold tracking-wider text-slate-500 uppercase">Empower · Build · Deliver</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-slate-600">
+        <a href="#about" class="hover:text-brand-600 transition-colors">About</a>
+        <a href="#domains" class="hover:text-brand-600 transition-colors flex items-center gap-1">
+          Domains <span class="bg-indigo-100 text-indigo-700 text-[10px] px-1.5 py-0.5 rounded-full font-bold">6 Tracks</span>
+        </a>
+        <a href="#why-us" class="hover:text-brand-600 transition-colors">Why Choose Us</a>
+        <a href="#roadmap" class="hover:text-brand-600 transition-colors">Workflow</a>
+        <a href="#workshops" class="hover:text-brand-600 transition-colors">Workshops</a>
+        <a href="#testimonials" class="hover:text-brand-600 transition-colors">Reviews</a>
+        <a href="#faq" class="hover:text-brand-600 transition-colors">FAQs</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="hidden sm:flex items-center space-x-3">
+        <!-- Certificate Verifier Trigger -->
+        <button onclick="openVerifyModal()" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-all flex items-center gap-2">
+          <i class="fa-solid fa-shield-halved text-indigo-600"></i>
+          Verify ID
+        </button>
+
+        <!-- Apply CTA -->
+        <button onclick="openApplyModal('General Cohort')" class="px-5 py-2.5 rounded-xl text-xs font-bold text-white badge-gradient shadow-md shadow-indigo-600/20 hover:shadow-indigo-600/35 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2">
+          <span>Apply for Internship</span>
+          <i class="fa-solid fa-arrow-right-long text-[11px]"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobileMenuBtn" aria-label="Toggle Navigation" class="lg:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">
+        <i class="fa-solid fa-bars-staggered text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-100 bg-white/95 px-4 pt-3 pb-6 space-y-3 shadow-xl transition-all">
+      <nav class="flex flex-col space-y-2 text-base font-semibold text-slate-700">
+        <a href="#about" class="px-3 py-2 rounded-lg hover:bg-slate-100 mobile-nav-link">About InternNova</a>
+        <a href="#domains" class="px-3 py-2 rounded-lg hover:bg-slate-100 mobile-nav-link flex justify-between items-center">
+          Internship Domains <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-0.5 rounded-full font-bold">6 Active</span>
+        </a>
+        <a href="#why-us" class="px-3 py-2 rounded-lg hover:bg-slate-100 mobile-nav-link">Why Choose Us</a>
+        <a href="#roadmap" class="px-3 py-2 rounded-lg hover:bg-slate-100 mobile-nav-link">Mentorship Roadmap</a>
+        <a href="#workshops" class="px-3 py-2 rounded-lg hover:bg-slate-100 mobile-nav-link">Live Workshops</a>
+        <a href="#testimonials" class="px-3 py-2 rounded-lg hover:bg-slate-100 mobile-nav-link">Student Testimonials</a>
+        <a href="#faq" class="px-3 py-2 rounded-lg hover:bg-slate-100 mobile-nav-link">FAQs</a>
+      </nav>
+      <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
+        <button onclick="openVerifyModal(); closeMobileMenu();" class="w-full py-2.5 rounded-xl font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 text-center flex items-center justify-center gap-2">
+          <i class="fa-solid fa-shield-halved text-indigo-600"></i> Verify Certificate
+        </button>
+        <button onclick="openApplyModal('General Cohort'); closeMobileMenu();" class="w-full py-3 rounded-xl font-bold text-white badge-gradient text-center shadow-md">
+          Apply Now (Batch-06)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       3. Hero Section
+  ========================================================================== -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
+    <!-- Ambient Background Lighting -->
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-indigo-200/40 via-purple-200/30 to-pink-200/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+          
+          <!-- Badges Pill -->
+          <div class="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-indigo-50 border border-indigo-200/70 text-indigo-800 shadow-sm">
+              <span class="flex text-amber-400 text-xs">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </span>
+              <strong class="font-bold text-slate-900">4.9/5</strong>
+              <span class="text-slate-500">(1,000+ Alumni)</span>
+            </span>
+
+            <span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 border border-emerald-200/70 text-emerald-800 shadow-sm">
+              <i class="fa-solid fa-building-circle-check text-emerald-600"></i>
+              Govt. MSME Reg: <span class="font-mono font-bold text-slate-800">BR-24-0054689</span>
+            </span>
+          </div>
+
+          <!-- Main Catchy Title -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.12]">
+            Build Real Skills. <br class="hidden sm:inline">
+            <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-800 bg-clip-text text-transparent">
+              Ship Real Projects.
+            </span><br>
+            Land Dream Tech Careers.
+          </h1>
+
+          <!-- Value Proposition Subtitle -->
+          <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+            Stop passively watching endless tutorial playlists. Join InternNova’s 4-week task-driven virtual cohorts, receive 1-on-1 code reviews from senior engineers, build production-grade GitHub projects, and earn verified credentials recruiters respect.
+          </p>
+
+          <!-- Dual CTA Buttons & Trust Indicators -->
+          <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="#domains" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-white badge-gradient shadow-lg shadow-indigo-600/25 hover:shadow-indigo-600/40 hover:-translate-y-0.5 active:translate-y-0 transition-all text-center flex items-center justify-center gap-2 group">
+              <span>Explore Internship Tracks</span>
+              <i class="fa-solid fa-arrow-down text-sm group-hover:translate-y-0.5 transition-transform"></i>
+            </a>
+
+            <button onclick="openVerifyModal()" class="w-full sm:w-auto px-6 py-4 rounded-xl font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 hover:border-slate-300 shadow-subtle transition-all flex items-center justify-center gap-2">
+              <i class="fa-solid fa-fingerprint text-indigo-600 text-base"></i>
+              <span>Verify Existing Certificate</span>
+            </button>
+          </div>
+
+          <!-- Quick Trust Bullets -->
+          <div class="pt-4 grid grid-cols-3 gap-2 border-t border-slate-200/70 max-w-lg mx-auto lg:mx-0">
+            <div class="text-left">
+              <p class="text-xs text-slate-500 font-medium">Cohort Mode</p>
+              <p class="text-sm font-bold text-slate-800 flex items-center gap-1.5"><i class="fa-solid fa-laptop-code text-indigo-600"></i> 100% Virtual</p>
+            </div>
+            <div class="text-left border-l border-slate-200 pl-3">
+              <p class="text-xs text-slate-500 font-medium">Duration</p>
+              <p class="text-sm font-bold text-slate-800 flex items-center gap-1.5"><i class="fa-regular fa-calendar-check text-indigo-600"></i> 4–6 Weeks</p>
+            </div>
+            <div class="text-left border-l border-slate-200 pl-3">
+              <p class="text-xs text-slate-500 font-medium">Outcome</p>
+              <p class="text-sm font-bold text-slate-800 flex items-center gap-1.5"><i class="fa-solid fa-award text-indigo-600"></i> Verified Credential</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Hero Interactive Visual Card -->
+        <div class="lg:col-span-5 relative">
+          <!-- Glass Dashboard Preview -->
+          <div class="relative bg-white/80 backdrop-blur-xl border border-slate-200/80 rounded-3xl p-6 shadow-2xl shadow-indigo-900/10">
+            
+            <!-- Window Bar -->
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+              <div class="flex items-center space-x-1.5">
+                <div class="w-3 h-3 rounded-full bg-rose-400"></div>
+                <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+              </div>
+              <span class="text-[11px] font-mono text-slate-400 bg-slate-50 px-2.5 py-1 rounded-md border border-slate-100 flex items-center gap-1">
+                <i class="fa-solid fa-circle text-[6px] text-emerald-500 animate-ping"></i> student-portal.internnova.co.in
+              </span>
+            </div>
+
+            <!-- Dashboard Mini Card Content -->
+            <div class="pt-5 space-y-4">
+              <!-- Intern Card Mockup -->
+              <div class="p-4 rounded-2xl bg-gradient-to-br from-indigo-50/70 via-purple-50/30 to-white border border-indigo-100/70">
+                <div class="flex items-start justify-between">
+                  <div class="flex items-center space-x-3">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Student Profile" class="w-12 h-12 rounded-xl object-cover ring-2 ring-indigo-200">
+                    <div>
+                      <h4 class="text-sm font-bold text-slate-900">Pooja Sharma</h4>
+                      <p class="text-xs text-indigo-600 font-semibold">Web Development Cohort #05</p>
+                    </div>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800">
+                    COMPLETED
+                  </span>
+                </div>
+
+                <!-- Progress indicators -->
+                <div class="mt-4 space-y-1.5">
+                  <div class="flex justify-between text-xs font-semibold">
+                    <span class="text-slate-600">Milestone: 4 of 4 Projects</span>
+                    <span class="text-indigo-600">100%</span>
+                  </div>
+                  <div class="w-full bg-slate-200/80 rounded-full h-2">
+                    <div class="bg-gradient-to-r from-indigo-500 to-purple-600 h-2 rounded-full w-full"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Live Peer Reviews Activity Feed -->
+              <div class="space-y-2.5">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Live Mentor Actions</p>
+                
+                <div class="p-3 bg-slate-50/80 rounded-xl border border-slate-100 flex items-center justify-between text-xs">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold">
+                      <i class="fa-brands fa-github text-sm"></i>
+                    </div>
+                    <div>
+                      <p class="font-bold text-slate-800">Task 3: Fullstack API Approved</p>
+                      <p class="text-[11px] text-slate-500">Mentor: Rahul S. · 12 mins ago</p>
+                    </div>
+                  </div>
+                  <span class="text-emerald-600 font-bold text-xs"><i class="fa-solid fa-check"></i> Merged</span>
+                </div>
+
+                <div class="p-3 bg-slate-50/80 rounded-xl border border-slate-100 flex items-center justify-between text-xs">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">
+                      <i class="fa-solid fa-certificate text-sm"></i>
+                    </div>
+                    <div>
+                      <p class="font-bold text-slate-800">Certificate Credential Generated</p>
+                      <p class="text-[11px] text-slate-500">ID: IN-2026-WD892</p>
+                    </div>
+                  </div>
+                  <button onclick="simulateVerification('IN-2026-WD892')" class="text-indigo-600 font-bold hover:underline text-[11px]">View</button>
+                </div>
+              </div>
+
+              <!-- Quick Banner inside preview -->
+              <div class="p-3.5 bg-gradient-to-r from-slate-900 to-indigo-950 rounded-2xl text-white flex items-center justify-between">
+                <div>
+                  <p class="text-[11px] text-indigo-200">Next Cohort Kickoff</p>
+                  <p class="text-xs font-bold text-white">Batch-06 Starting Monday</p>
+                </div>
+                <button onclick="openApplyModal('Priority Access')" class="text-xs px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 font-semibold transition-colors">
+                  Reserve Spot
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Floating decorative bubble 1 -->
+          <div class="hidden sm:flex absolute -bottom-6 -left-6 bg-white p-3.5 rounded-2xl border border-slate-100 shadow-xl items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-base">
+              <i class="fa-solid fa-code-commit"></i>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-slate-900">Real Git Submissions</p>
+              <p class="text-[11px] text-slate-500">Every task evaluated on PRs</p>
+            </div>
+          </div>
+
+          <!-- Floating decorative bubble 2 -->
+          <div class="hidden sm:flex absolute -top-5 -right-5 bg-white p-3 rounded-2xl border border-slate-100 shadow-xl items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-xs font-bold text-slate-800">48 Slots Left in Batch-06</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. Live Statistics & Credibility Counter
+  ========================================================================== -->
+  <section class="border-y border-slate-200/70 bg-white/70 backdrop-blur-sm py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
+        
+        <div class="pt-4 md:pt-0">
+          <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">1,000<span class="text-indigo-600">+</span></p>
+          <p class="text-xs sm:text-sm font-semibold text-slate-500 mt-1 uppercase tracking-wider">Students Enrolled</p>
+          <p class="text-[11px] text-slate-400 mt-0.5">Across India & South Asia</p>
+        </div>
+
+        <div class="pt-4 md:pt-0">
+          <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">6<span class="text-indigo-600">+</span></p>
+          <p class="text-xs sm:text-sm font-semibold text-slate-500 mt-1 uppercase tracking-wider">High-Demand Domains</p>
+          <p class="text-[11px] text-slate-400 mt-0.5">Curated with Industry Mentors</p>
+        </div>
+
+        <div class="pt-4 md:pt-0">
+          <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">100<span class="text-indigo-600">+</span></p>
+          <p class="text-xs sm:text-sm font-semibold text-slate-500 mt-1 uppercase tracking-wider">Colleges Represented</p>
+          <p class="text-[11px] text-slate-400 mt-0.5">IITs, NITs, NMIMS, VIT & State Unis</p>
+        </div>
+
+        <div class="pt-4 md:pt-0">
+          <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">100<span class="text-emerald-500">%</span></p>
+          <p class="text-xs sm:text-sm font-semibold text-slate-500 mt-1 uppercase tracking-wider">Verifiable Credentials</p>
+          <p class="text-[11px] text-slate-400 mt-0.5">Instant tamper-proof checks</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. About InternNova: Mission & Pillars
+  ========================================================================== -->
+  <section id="about" class="py-20 lg:py-28 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-extrabold tracking-widest text-indigo-600 uppercase bg-indigo-50 border border-indigo-200/50 px-3 py-1 rounded-full">
+          About The Platform
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
+          Bridging The Academic-to-Industry Divide
+        </h2>
+        <p class="text-slate-600 mt-4 text-base sm:text-lg">
+          College syllabi teach theory from textbooks. Recruiters hire for code shipped to GitHub. InternNova was built to turn motivated learners into job-ready developers through task-focused, mentor-reviewed project building.
+        </p>
+      </div>
+
+      <!-- 4 Pillars Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Card 1 -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-subtle border-gradient-hover flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl mb-5">
+              <i class="fa-solid fa-laptop-file"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Hands-on Task System</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              No boring 40-hour video courses. You get week-by-week product specifications, user stories, and milestone deliverables to complete.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center text-xs font-bold text-indigo-600">
+            <span>Production Workflows</span> <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-subtle border-gradient-hover flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl mb-5">
+              <i class="fa-solid fa-code-pull-request"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Mentor Code Reviews</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Every task is submitted via Git repositories. Senior mentors review your clean code practices, logic, modularity, and error handling.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center text-xs font-bold text-purple-600">
+            <span>Detailed PR Feedback</span> <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-subtle border-gradient-hover flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mb-5">
+              <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Portfolio-Ready Assets</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Walk away with live deployed web apps, end-to-end data pipelines, or security audit logs that can be showcased on your resume.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center text-xs font-bold text-emerald-600">
+            <span>Stand Out in Interviews</span> <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-subtle border-gradient-hover flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-5">
+              <i class="fa-solid fa-certificate"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Govt. Recognised MSME</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Legitimate virtual internship program registered under Ministry of MSME, Govt of India (UDYAM-BR-24-0054689) with verifiable IDs.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center text-xs font-bold text-amber-600">
+            <span>Tamper-Proof Verification</span> <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. Internship Domains & Tracks (Interactive Filterable Section)
+  ========================================================================== -->
+  <section id="domains" class="py-20 bg-slate-50/70 border-t border-slate-200/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <span class="text-xs font-extrabold tracking-widest text-indigo-600 uppercase bg-indigo-50 border border-indigo-200/50 px-3 py-1 rounded-full">
+            Specialized Tracks
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
+            Choose Your Internship Domain
+          </h2>
+          <p class="text-slate-600 mt-2 max-w-xl text-base">
+            Curated 4–6 week tracks with hands-on weekly deliverables, dedicated support channels, and portfolio showcases.
+          </p>
+        </div>
+
+        <!-- Filter Pill Buttons -->
+        <div class="mt-6 md:mt-0 flex flex-wrap gap-2" id="domainFilterGroup">
+          <button onclick="filterDomains('all')" class="filter-btn active-filter px-4 py-2 rounded-xl text-xs font-bold transition-all bg-indigo-600 text-white shadow-sm" data-category="all">
+            All Domains
+          </button>
+          <button onclick="filterDomains('development')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 hover:bg-slate-100 border border-slate-200" data-category="development">
+            Development
+          </button>
+          <button onclick="filterDomains('data-ai')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 hover:bg-slate-100 border border-slate-200" data-category="data-ai">
+            Data & AI
+          </button>
+          <button onclick="filterDomains('security')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 hover:bg-slate-100 border border-slate-200" data-category="security">
+            Cyber Security
+          </button>
+        </div>
+      </div>
+
+      <!-- Domain Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="domainCardsGrid">
+
+        <!-- Domain Card 1: Web Development -->
+        <div class="domain-card bg-white rounded-2xl border border-slate-200/80 shadow-subtle overflow-hidden flex flex-col justify-between border-gradient-hover" data-category="development">
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">
+                <i class="fa-solid fa-code mr-1"></i> Web Dev
+              </span>
+              <span class="text-xs font-semibold text-slate-400">4–6 Weeks · Virtual</span>
+            </div>
+            
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Web Development Internship</h3>
+            <p class="text-sm text-slate-600 mb-4 line-clamp-2">
+              Master modern responsive layouts, JavaScript DOM manipulation, API integration, and fullstack React foundations.
+            </p>
+
+            <!-- Skills Pills -->
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">HTML5 / CSS3</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">Tailwind CSS</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">Modern JavaScript</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">React & REST APIs</span>
+            </div>
+
+            <!-- Key Capstone Project -->
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-600">
+              <strong class="text-slate-800 block mb-0.5"><i class="fa-solid fa-layer-group text-indigo-500 mr-1"></i> Capstone Deliverable:</strong>
+              E-commerce Storefront with Cart State, API fetch & Live Deployment.
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <button onclick="openApplyModal('Web Development')" class="w-full py-3 rounded-xl font-bold text-sm bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white border border-indigo-200 hover:border-transparent transition-all flex items-center justify-center gap-2 group">
+              <span>Apply for Web Dev</span>
+              <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Domain Card 2: Python Programming -->
+        <div class="domain-card bg-white rounded-2xl border border-slate-200/80 shadow-subtle overflow-hidden flex flex-col justify-between border-gradient-hover" data-category="development">
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-100">
+                <i class="fa-brands fa-python mr-1"></i> Python
+              </span>
+              <span class="text-xs font-semibold text-slate-400">4 Weeks · Virtual</span>
+            </div>
+            
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Python Development Track</h3>
+            <p class="text-sm text-slate-600 mb-4 line-clamp-2">
+              From modular scripting and OOP to automated web scraping, API development, and data manipulation.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">Python 3.12</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">OOP Concepts</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">File & Exception Handling</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">FastAPI / Flask</span>
+            </div>
+
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-600">
+              <strong class="text-slate-800 block mb-0.5"><i class="fa-solid fa-robot text-amber-500 mr-1"></i> Capstone Deliverable:</strong>
+              Automated Data Pipeline & Web Scraper with SQLite Storage.
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <button onclick="openApplyModal('Python Programming')" class="w-full py-3 rounded-xl font-bold text-sm bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white border border-indigo-200 hover:border-transparent transition-all flex items-center justify-center gap-2 group">
+              <span>Apply for Python</span>
+              <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Domain Card 3: Data Analytics -->
+        <div class="domain-card bg-white rounded-2xl border border-slate-200/80 shadow-subtle overflow-hidden flex flex-col justify-between border-gradient-hover" data-category="data-ai">
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-100">
+                <i class="fa-solid fa-chart-pie mr-1"></i> Analytics
+              </span>
+              <span class="text-xs font-semibold text-slate-400">4–6 Weeks · Virtual</span>
+            </div>
+            
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Data Analytics & BI Track</h3>
+            <p class="text-sm text-slate-600 mb-4 line-clamp-2">
+              Transform messy raw data into business intelligence dashboards using Advanced SQL, Excel, and Power BI.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">Advanced SQL</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">Power BI / Tableau</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">Data Cleansing</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">Pandas & NumPy</span>
+            </div>
+
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-600">
+              <strong class="text-slate-800 block mb-0.5"><i class="fa-solid fa-chart-line text-blue-500 mr-1"></i> Capstone Deliverable:</strong>
+              Interactive Executive Sales Dashboard & SQL Churn Analysis.
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <button onclick="openApplyModal('Data Analytics')" class="w-full py-3 rounded-xl font-bold text-sm bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white border border-indigo-200 hover:border-transparent transition-all flex items-center justify-center gap-2 group">
+              <span>Apply for Data Analytics</span>
+              <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Domain Card 4: AI & Machine Learning -->
+        <div class="domain-card bg-white rounded-2xl border border-slate-200/80 shadow-subtle overflow-hidden flex flex-col justify-between border-gradient-hover" data-category="data-ai">
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-purple-50 text-purple-700 border border-purple-100">
+                <i class="fa-solid fa-brain mr-1"></i> AI & ML
+              </span>
+              <span class="text-xs font-semibold text-slate-400">6 Weeks · Advanced</span>
+            </div>
+            
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Artificial Intelligence & ML</h3>
+            <p class="text-sm text-slate-600 mb-4 line-clamp-2">
+              Train regression and classification algorithms, evaluate models, and integrate generative LLM APIs.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">Scikit-Learn</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">Model Evaluation</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">OpenAI API</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">Streamlit Apps</span>
+            </div>
+
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-600">
+              <strong class="text-slate-800 block mb-0.5"><i class="fa-solid fa-microchip text-purple-500 mr-1"></i> Capstone Deliverable:</strong>
+              Smart Recommendation Engine deployed on Streamlit Cloud.
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <button onclick="openApplyModal('AI & Machine Learning')" class="w-full py-3 rounded-xl font-bold text-sm bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white border border-indigo-200 hover:border-transparent transition-all flex items-center justify-center gap-2 group">
+              <span>Apply for AI & ML</span>
+              <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Domain Card 5: Cyber Security -->
+        <div class="domain-card bg-white rounded-2xl border border-slate-200/80 shadow-subtle overflow-hidden flex flex-col justify-between border-gradient-hover" data-category="security">
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-rose-50 text-rose-700 border border-rose-100">
+                <i class="fa-solid fa-user-shield mr-1"></i> Security
+              </span>
+              <span class="text-xs font-semibold text-slate-400">4 Weeks · Virtual</span>
+            </div>
+            
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Cyber Security & Defense</h3>
+            <p class="text-sm text-slate-600 mb-4 line-clamp-2">
+              Understand network protocols, vulnerability assessments, OWASP Top 10 web vulnerabilities, and security hygiene.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">Network Auditing</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">OWASP Top 10</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">Wireshark</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">VAPT Principles</span>
+            </div>
+
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-600">
+              <strong class="text-slate-800 block mb-0.5"><i class="fa-solid fa-shield-cat text-rose-500 mr-1"></i> Capstone Deliverable:</strong>
+              Web Vulnerability Audit Report with Remediation Patch.
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <button onclick="openApplyModal('Cyber Security')" class="w-full py-3 rounded-xl font-bold text-sm bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white border border-indigo-200 hover:border-transparent transition-all flex items-center justify-center gap-2 group">
+              <span>Apply for Security</span>
+              <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Domain Card 6: Java Development -->
+        <div class="domain-card bg-white rounded-2xl border border-slate-200/80 shadow-subtle overflow-hidden flex flex-col justify-between border-gradient-hover" data-category="development">
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                <i class="fa-brands fa-java mr-1"></i> Java Enterprise
+              </span>
+              <span class="text-xs font-semibold text-slate-400">4–6 Weeks · Virtual</span>
+            </div>
+            
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Java Software Development</h3>
+            <p class="text-sm text-slate-600 mb-4 line-clamp-2">
+              Master Core Java, Collections framework, JDBC connectivity, and backend fundamentals required by enterprise IT employers.
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">Core Java 17+</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">OOP Architecture</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">JDBC & MySQL</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-700">Maven / Gradle</span>
+            </div>
+
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-600">
+              <strong class="text-slate-800 block mb-0.5"><i class="fa-solid fa-server text-amber-600 mr-1"></i> Capstone Deliverable:</strong>
+              Banking Management System with JDBC & Persistent Storage.
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <button onclick="openApplyModal('Java Software Development')" class="w-full py-3 rounded-xl font-bold text-sm bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white border border-indigo-200 hover:border-transparent transition-all flex items-center justify-center gap-2 group">
+              <span>Apply for Java</span>
+              <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Domain Footnote -->
+      <div class="mt-12 text-center">
+        <p class="text-sm text-slate-500">
+          Looking for a custom university credit transfer or specialized curriculum? 
+          <a href="mailto:support@internnova.co.in" class="text-indigo-600 font-bold hover:underline">Contact Academic Support</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. Why Choose InternNova (Comparison Matrix / Bento Grid)
+  ========================================================================== -->
+  <section id="why-us" class="py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-extrabold tracking-widest text-indigo-600 uppercase bg-indigo-50 border border-indigo-200/50 px-3 py-1 rounded-full">
+          The Advantage
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
+          Why Top Students Choose InternNova
+        </h2>
+        <p class="text-slate-600 mt-3 text-base">
+          See how our hands-on task framework delivers 10x more real-world growth than passive tutorial platforms.
+        </p>
+      </div>
+
+      <!-- Comparison Matrix Card -->
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-card overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-200 bg-slate-50/70 text-slate-700 text-sm font-bold">
+                <th class="p-5 sm:p-6 w-1/3">Key Dimension</th>
+                <th class="p-5 sm:p-6 w-1/3 bg-indigo-50/50 text-indigo-900 border-x border-indigo-100 flex items-center gap-2">
+                  <i class="fa-solid fa-cube text-indigo-600"></i> InternNova Internship
+                </th>
+                <th class="p-5 sm:p-6 w-1/3 text-slate-500">Generic Online Video Course</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-sm">
+              
+              <tr>
+                <td class="p-5 sm:p-6 font-semibold text-slate-900">
+                  Learning Methodology
+                </td>
+                <td class="p-5 sm:p-6 bg-indigo-50/30 font-medium text-indigo-950 border-x border-indigo-100">
+                  <span class="text-emerald-600 font-bold mr-1.5"><i class="fa-solid fa-check"></i></span>
+                  Task-driven: Real problem specs & git submissions.
+                </td>
+                <td class="p-5 sm:p-6 text-slate-500">
+                  <span class="text-rose-500 font-bold mr-1.5"><i class="fa-solid fa-xmark"></i></span>
+                  Passive video watching, rarely finished.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="p-5 sm:p-6 font-semibold text-slate-900">
+                  Mentor Code Evaluation
+                </td>
+                <td class="p-5 sm:p-6 bg-indigo-50/30 font-medium text-indigo-950 border-x border-indigo-100">
+                  <span class="text-emerald-600 font-bold mr-1.5"><i class="fa-solid fa-check"></i></span>
+                  Personalized PR feedback on structure & cleanliness.
+                </td>
+                <td class="p-5 sm:p-6 text-slate-500">
+                  <span class="text-rose-500 font-bold mr-1.5"><i class="fa-solid fa-xmark"></i></span>
+                  None or auto-graded multiple-choice quizzes.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="p-5 sm:p-6 font-semibold text-slate-900">
+                  Deliverables for Resume
+                </td>
+                <td class="p-5 sm:p-6 bg-indigo-50/30 font-medium text-indigo-950 border-x border-indigo-100">
+                  <span class="text-emerald-600 font-bold mr-1.5"><i class="fa-solid fa-check"></i></span>
+                  Custom GitHub repository links + Live Demo URLs.
+                </td>
+                <td class="p-5 sm:p-6 text-slate-500">
+                  <span class="text-rose-500 font-bold mr-1.5"><i class="fa-solid fa-xmark"></i></span>
+                  Identical copy-pasted tutorial code.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="p-5 sm:p-6 font-semibold text-slate-900">
+                  Verification & Credential
+                </td>
+                <td class="p-5 sm:p-6 bg-indigo-50/30 font-medium text-indigo-950 border-x border-indigo-100">
+                  <span class="text-emerald-600 font-bold mr-1.5"><i class="fa-solid fa-check"></i></span>
+                  Instant Public URL Verification with MSME Stamp.
+                </td>
+                <td class="p-5 sm:p-6 text-slate-500">
+                  <span class="text-rose-500 font-bold mr-1.5"><i class="fa-solid fa-xmark"></i></span>
+                  Unauthenticated PDF certificate.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="p-5 sm:p-6 font-semibold text-slate-900">
+                  Community & Doubt Clearing
+                </td>
+                <td class="p-5 sm:p-6 bg-indigo-50/30 font-medium text-indigo-950 border-x border-indigo-100">
+                  <span class="text-emerald-600 font-bold mr-1.5"><i class="fa-solid fa-check"></i></span>
+                  Dedicated Discord/WhatsApp cohorts with senior TAs.
+                </td>
+                <td class="p-5 sm:p-6 text-slate-500">
+                  <span class="text-rose-500 font-bold mr-1.5"><i class="fa-solid fa-xmark"></i></span>
+                  Dead discussion forum with month-old answers.
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. Learning & Mentorship Workflow (Step-by-Step Interactive Roadmap)
+  ========================================================================== -->
+  <section id="roadmap" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+    <!-- Glow decorative backdrops -->
+    <div class="absolute -top-32 -right-32 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-extrabold tracking-widest text-indigo-400 uppercase bg-indigo-950 border border-indigo-800 px-3 py-1 rounded-full">
+          Internship Lifecycle
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-3">
+          Your 4-Week Journey to Certification
+        </h2>
+        <p class="text-slate-400 mt-3 text-base">
+          A seamless structured progression designed to turn theoretical knowledge into tangible engineering achievements.
+        </p>
+      </div>
+
+      <!-- Steps Timeline Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Step 1 -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg">1</span>
+              <span class="text-xs text-indigo-400 font-mono font-semibold">DAY 01</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Offer Letter & Onboarding</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Submit your domain choice. Receive your official Offer Letter with cohort credentials and student portal login.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-700/60 text-xs text-slate-400 flex items-center gap-1.5">
+            <i class="fa-solid fa-envelope-open-text text-indigo-400"></i> Instant email onboarding
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold text-lg">2</span>
+              <span class="text-xs text-purple-400 font-mono font-semibold">WEEK 01–03</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Weekly Milestones</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Work on task briefs, follow code guidelines, and push source code to your dedicated GitHub repository.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-700/60 text-xs text-slate-400 flex items-center gap-1.5">
+            <i class="fa-brands fa-git-alt text-purple-400"></i> 3 Core Project Milestones
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg">3</span>
+              <span class="text-xs text-blue-400 font-mono font-semibold">WEEK 04</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Capstone & Mentor Review</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Build your final Capstone Project. Mentors grade implementation, responsive polish, and functionality.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-700/60 text-xs text-slate-400 flex items-center gap-1.5">
+            <i class="fa-solid fa-code-commit text-blue-400"></i> Rigorous PR feedback
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-lg">4</span>
+              <span class="text-xs text-emerald-400 font-mono font-semibold">GRADUATION</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Verified Credential & LOR</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Receive your tamper-proof digital completion certificate, unique Verification ID, and top performer Letter of Recommendation.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-700/60 text-xs text-slate-400 flex items-center gap-1.5">
+            <i class="fa-solid fa-award text-emerald-400"></i> Lifetime public verification
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action in Workflow -->
+      <div class="mt-12 text-center">
+        <button onclick="openApplyModal('General Cohort')" class="px-8 py-3.5 rounded-xl font-bold text-white badge-gradient shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:scale-105 transition-all">
+          Join Next Enrolling Batch
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. Workshops & Masterclasses Section
+  ========================================================================== -->
+  <section id="workshops" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <span class="text-xs font-extrabold tracking-widest text-indigo-600 uppercase bg-indigo-50 border border-indigo-200/50 px-3 py-1 rounded-full">
+            Live Learning
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
+            Industry Workshops & Masterclasses
+          </h2>
+          <p class="text-slate-600 mt-2 max-w-xl text-base">
+            Live interactive weekend sessions led by industry practitioners to level-up your tooling and career acumen.
+          </p>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <span class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-xl flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> Free for all enrolled interns
+          </span>
+        </div>
+      </div>
+
+      <!-- Workshops Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Workshop 1 -->
+        <div class="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between border-gradient-hover">
+          <div>
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-3">
+              <span class="bg-indigo-100 text-indigo-700 px-2.5 py-0.5 rounded-full font-bold">Upcoming Live</span>
+              <span><i class="fa-regular fa-clock mr-1"></i> 90 Mins</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Modern Git, GitHub PRs & Open-Source Workflows</h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">
+              Master rebasing, resolving merge conflicts, branch protections, and writing production-grade pull requests.
+            </p>
+            <div class="flex items-center gap-3 pt-3 border-t border-slate-200/70">
+              <div class="w-9 h-9 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center text-xs">AK</div>
+              <div>
+                <p class="text-xs font-bold text-slate-800">Aman Kumar</p>
+                <p class="text-[11px] text-slate-500">Senior Dev @ Fintech SaaS</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6">
+            <button onclick="registerWorkshop('Modern Git & GitHub')" class="w-full py-2.5 rounded-xl font-bold text-xs bg-white text-indigo-600 border border-indigo-200 hover:bg-indigo-600 hover:text-white transition-all shadow-sm">
+              Register for Free
+            </button>
+          </div>
+        </div>
+
+        <!-- Workshop 2 -->
+        <div class="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between border-gradient-hover">
+          <div>
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-3">
+              <span class="bg-purple-100 text-purple-700 px-2.5 py-0.5 rounded-full font-bold">AI Spotlight</span>
+              <span><i class="fa-regular fa-clock mr-1"></i> 2 Hours</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Integrating LLMs & AI APIs into Fullstack Apps</h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">
+              Learn how to build AI-augmented web applications using OpenAI APIs, streaming responses, and prompt engineering.
+            </p>
+            <div class="flex items-center gap-3 pt-3 border-t border-slate-200/70">
+              <div class="w-9 h-9 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center text-xs">RS</div>
+              <div>
+                <p class="text-xs font-bold text-slate-800">Rhea Sen</p>
+                <p class="text-[11px] text-slate-500">ML Engineer @ CloudScale</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6">
+            <button onclick="registerWorkshop('Integrating LLMs & AI APIs')" class="w-full py-2.5 rounded-xl font-bold text-xs bg-white text-indigo-600 border border-indigo-200 hover:bg-indigo-600 hover:text-white transition-all shadow-sm">
+              Register for Free
+            </button>
+          </div>
+        </div>
+
+        <!-- Workshop 3 -->
+        <div class="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-6 flex flex-col justify-between border-gradient-hover">
+          <div>
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-3">
+              <span class="bg-emerald-100 text-emerald-700 px-2.5 py-0.5 rounded-full font-bold">Career Lab</span>
+              <span><i class="fa-regular fa-clock mr-1"></i> 75 Mins</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Cracking Tech Campus Rounds: Resumes & DSA</h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">
+              Actionable advice on passing ATS filters, structuring project descriptions, and answering live system design queries.
+            </p>
+            <div class="flex items-center gap-3 pt-3 border-t border-slate-200/70">
+              <div class="w-9 h-9 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-xs">VN</div>
+              <div>
+                <p class="text-xs font-bold text-slate-800">Vikram Nair</p>
+                <p class="text-[11px] text-slate-500">Tech Recruiter & Ex-FAANG</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6">
+            <button onclick="registerWorkshop('Cracking Tech Rounds')" class="w-full py-2.5 rounded-xl font-bold text-xs bg-white text-indigo-600 border border-indigo-200 hover:bg-indigo-600 hover:text-white transition-all shadow-sm">
+              Register for Free
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       10. Authentic Student Testimonials
+  ========================================================================== -->
+  <section id="testimonials" class="py-20 lg:py-28 bg-slate-50/70 border-t border-slate-200/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-extrabold tracking-widest text-indigo-600 uppercase bg-indigo-50 border border-indigo-200/50 px-3 py-1 rounded-full">
+          Student Voices
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
+          Trusted by 1000+ Ambitious Students
+        </h2>
+        <p class="text-slate-600 mt-3 text-base">
+          Read candid reviews from students who built real-world projects and bolstered their resumes through InternNova.
+        </p>
+      </div>
+
+      <!-- Testimonial Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Review 1 -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-subtle flex flex-col justify-between border-gradient-hover">
+          <div class="space-y-4">
+            <div class="flex items-center text-amber-400 text-xs">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-sm text-slate-700 italic leading-relaxed">
+              "The 4-week Web Development track was far better than expected. The weekly tasks pushed me to master CSS Flexbox and JS Async calls. Getting real feedback on GitHub pull requests helped me ace my technical interview at TCS!"
+            </p>
+          </div>
+          <div class="pt-6 border-t border-slate-100 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Ananya Roy" class="w-10 h-10 rounded-full object-cover ring-2 ring-indigo-100">
+              <div>
+                <p class="text-xs font-bold text-slate-900">Ananya Roy</p>
+                <p class="text-[11px] text-slate-500">B.Tech CSE · NIT Rourkela</p>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-100">
+              Verified Intern
+            </span>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-subtle flex flex-col justify-between border-gradient-hover">
+          <div class="space-y-4">
+            <div class="flex items-center text-amber-400 text-xs">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-sm text-slate-700 italic leading-relaxed">
+              "In the Data Analytics internship, I built an interactive Power BI sales dashboard using SQL datasets. Having a verified digital certificate with a government-registered MSME ID gave my university coordinator immediate confidence to approve my internship credits."
+            </p>
+          </div>
+          <div class="pt-6 border-t border-slate-100 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Harsh Vardhan" class="w-10 h-10 rounded-full object-cover ring-2 ring-indigo-100">
+              <div>
+                <p class="text-xs font-bold text-slate-900">Harsh Vardhan</p>
+                <p class="text-[11px] text-slate-500">Data Science · NMIMS Mumbai</p>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-100">
+              Verified Intern
+            </span>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-subtle flex flex-col justify-between border-gradient-hover">
+          <div class="space-y-4">
+            <div class="flex items-center text-amber-400 text-xs">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <p class="text-sm text-slate-700 italic leading-relaxed">
+              "As a 2nd year Python enthusiast, finding remote internships that treat you seriously is hard. InternNova gave me explicit tasks, error logging challenges, and clean code criteria. Highly recommended for any engineering student!"
+            </p>
+          </div>
+          <div class="pt-6 border-t border-slate-100 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Karthik Krishnan" class="w-10 h-10 rounded-full object-cover ring-2 ring-indigo-100">
+              <div>
+                <p class="text-xs font-bold text-slate-900">Karthik Krishnan</p>
+                <p class="text-[11px] text-slate-500">Information Tech · VIT Vellore</p>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-100">
+              Verified Intern
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       11. Interactive Certificate Verification Simulator Widget
+  ========================================================================== -->
+  <section class="py-20 bg-white relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-950 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+        
+        <div class="max-w-2xl relative z-10">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-400/30">
+            <i class="fa-solid fa-shield-check"></i> Authentic Credential Engine
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-4">
+            Instant Certificate Verification
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base mt-2 leading-relaxed">
+            Employers, recruiters, and college authorities can verify any InternNova certificate in real-time. Try entering sample ID <code class="bg-indigo-900/80 px-2 py-0.5 rounded font-mono text-amber-300 font-bold">IN-2026-WD01</code> or test your own.
+          </p>
+
+          <!-- Input Verification Form -->
+          <form onsubmit="handleVerificationSubmit(event)" class="mt-8 flex flex-col sm:flex-row gap-3">
+            <div class="relative flex-1">
+              <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+              <input 
+                type="text" 
+                id="certInputHome" 
+                placeholder="Enter Credential ID (e.g. IN-2026-WD01)" 
+                class="w-full pl-10 pr-4 py-3.5 rounded-xl bg-slate-900/90 border border-indigo-700/60 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 font-mono text-sm"
+                required
+              >
+            </div>
+            <button type="submit" class="px-6 py-3.5 rounded-xl font-bold text-sm bg-indigo-500 hover:bg-indigo-400 text-white shadow-lg transition-all flex items-center justify-center gap-2">
+              <span>Verify Credential</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+          </form>
+
+          <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-400">
+            <span>Quick Test IDs:</span>
+            <button onclick="document.getElementById('certInputHome').value='IN-2026-WD01'" class="underline hover:text-white font-mono">IN-2026-WD01</button>
+            <span>·</span>
+            <button onclick="document.getElementById('certInputHome').value='IN-2026-DA45'" class="underline hover:text-white font-mono">IN-2026-DA45</button>
+            <span>·</span>
+            <button onclick="document.getElementById('certInputHome').value='IN-2026-PY88'" class="underline hover:text-white font-mono">IN-2026-PY88</button>
+          </div>
+        </div>
+
+        <!-- Decorative background graphics -->
+        <div class="hidden lg:block absolute right-8 top-1/2 -translate-y-1/2 opacity-15 pointer-events-none">
+          <i class="fa-solid fa-certificate text-[240px] text-white"></i>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       12. Frequently Asked Questions (FAQ Accordion)
+  ========================================================================== -->
+  <section id="faq" class="py-20 bg-slate-50/70 border-t border-slate-200/70">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16">
+        <span class="text-xs font-extrabold tracking-widest text-indigo-600 uppercase bg-indigo-50 border border-indigo-200/50 px-3 py-1 rounded-full">
+          Got Questions?
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-slate-600 mt-2 text-base">
+          Everything you need to know about InternNova’s cohorts, evaluations, and certification.
+        </p>
+      </div>
+
+      <!-- Accordion Container -->
+      <div class="space-y-4">
+        
+        <!-- FAQ 1 -->
+        <div class="faq-item bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-indigo-600 transition-colors">
+            <span class="text-base sm:text-lg">Are these internships remote and flexible for college students?</span>
+            <i class="fa-solid fa-chevron-down text-sm text-slate-400 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+            Yes, 100%! All InternNova cohorts are completely virtual and self-paced within the weekly milestone deadline. You can schedule your coding hours around your college lectures, exams, and personal schedule.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-indigo-600 transition-colors">
+            <span class="text-base sm:text-lg">Do I need prior advanced coding experience to apply?</span>
+            <i class="fa-solid fa-chevron-down text-sm text-slate-400 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+            Basic foundational understanding of programming in your chosen track is beneficial (e.g. basics of HTML/CSS for Web Dev, or variables and loops for Python). Each task comes with structured task briefs, guidelines, and reference documentation to help you bridge knowledge gaps.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-indigo-600 transition-colors">
+            <span class="text-base sm:text-lg">How are certificates verified by companies or universities?</span>
+            <i class="fa-solid fa-chevron-down text-sm text-slate-400 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+            Each credential comes with a unique Verification ID (e.g. IN-2026-WD01) and a tamper-proof QR code. Recruiters or professors can simply enter this ID on InternNova's online portal or scan the QR code to see the official student name, cohort dates, capstone score, and verified MSME seal.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-indigo-600 transition-colors">
+            <span class="text-base sm:text-lg">What is InternNova's MSME Registration status?</span>
+            <i class="fa-solid fa-chevron-down text-sm text-slate-400 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+            InternNova operates as an officially registered entity under the Ministry of Micro, Small & Medium Enterprises (MSME), Government of India, under Udyam registration number: <strong>UDYAM-BR-24-0054689</strong>.
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-indigo-600 transition-colors">
+            <span class="text-base sm:text-lg">Will I receive an Offer Letter before starting?</span>
+            <i class="fa-solid fa-chevron-down text-sm text-slate-400 transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+            Yes. Once your registration is confirmed, an official Internship Offer Letter is dispatched to your registered email address, complete with cohort kickoff instructions and timeline details for your college records.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       13. High-Impact Call-to-Action (CTA) Section
+  ========================================================================== -->
+  <section class="py-20 lg:py-28 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="relative bg-gradient-to-r from-slate-950 via-indigo-950 to-purple-950 rounded-3xl p-10 sm:p-16 text-center text-white shadow-2xl border border-indigo-900/50">
+        
+        <!-- Subtle Glow Circle -->
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-3xl mx-auto space-y-6">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Spring 2026 Batch Applications Active
+          </span>
+
+          <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            Ready to Build Real Projects That Get You Hired?
+          </h2>
+
+          <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            Take the leap from passive learner to verified developer. Join thousands of students building their engineering careers with InternNova.
+          </p>
+
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button onclick="openApplyModal('Direct CTA')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-white badge-gradient shadow-lg shadow-indigo-600/40 hover:shadow-indigo-600/60 hover:scale-105 transition-all text-center flex items-center justify-center gap-2">
+              <span>Apply for Batch-06 Now</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+
+            <a href="mailto:support@internnova.co.in" class="w-full sm:w-auto px-7 py-4 rounded-xl font-bold text-slate-200 bg-white/10 hover:bg-white/15 border border-white/20 transition-all text-center flex items-center justify-center gap-2">
+              <i class="fa-regular fa-envelope"></i>
+              <span>Talk to Counselor</span>
+            </a>
+          </div>
+
+          <p class="text-xs text-slate-400 pt-2">
+            No credit card required for initial application. 100% remote evaluation.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       14. Comprehensive Footer
+  ========================================================================== -->
+  <footer class="bg-slate-950 text-slate-400 text-sm border-t border-slate-900 pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        
+        <!-- Col 1: Brand & Gov Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl badge-gradient flex items-center justify-center text-white shadow-md">
+              <i class="fa-solid fa-cube text-lg"></i>
+            </div>
+            <span class="font-extrabold text-2xl tracking-tight text-white">InternNova</span>
+          </div>
+
+          <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
+            InternNova is an industry-focused virtual internship platform bridging academia and practical engineering careers through task-driven cohorts and verified credentials.
+          </p>
+
+          <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800 text-xs space-y-1">
+            <p class="font-semibold text-slate-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-shield-check text-emerald-400"></i> Govt. Recognized Entity
+            </p>
+            <p class="text-slate-400 font-mono text-[11px]">MSME Reg: UDYAM-BR-24-0054689</p>
+          </div>
+
+          <!-- Socials -->
+          <div class="flex items-center space-x-3 pt-2">
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-indigo-600 hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-linkedin-in text-xs"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-pink-600 hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-instagram text-xs"></i>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-slate-700 hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-github text-xs"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-sky-500 hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-x-twitter text-xs"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="space-y-3">
+          <p class="text-xs font-bold uppercase tracking-wider text-white">Navigation</p>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="#about" class="hover:text-white transition-colors">About Mission</a></li>
+            <li><a href="#domains" class="hover:text-white transition-colors">Internship Domains</a></li>
+            <li><a href="#why-us" class="hover:text-white transition-colors">Why Choose Us</a></li>
+            <li><a href="#roadmap" class="hover:text-white transition-colors">Cohort Roadmap</a></li>
+            <li><a href="#workshops" class="hover:text-white transition-colors">Free Masterclasses</a></li>
+            <li><a href="#testimonials" class="hover:text-white transition-colors">Student Reviews</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Domains -->
+        <div class="space-y-3">
+          <p class="text-xs font-bold uppercase tracking-wider text-white">Popular Tracks</p>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#domains" class="hover:text-white transition-colors">Web Development</a></li>
+            <li><a href="#domains" class="hover:text-white transition-colors">Python Programming</a></li>
+            <li><a href="#domains" class="hover:text-white transition-colors">Data Analytics</a></li>
+            <li><a href="#domains" class="hover:text-white transition-colors">AI & Machine Learning</a></li>
+            <li><a href="#domains" class="hover:text-white transition-colors">Cyber Security</a></li>
+            <li><a href="#domains" class="hover:text-white transition-colors">Java Software Dev</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact & Support -->
+        <div class="space-y-3">
+          <p class="text-xs font-bold uppercase tracking-wider text-white">Help & Contact</p>
+          <div class="space-y-2 text-xs">
+            <p class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-indigo-400"></i>
+              <a href="mailto:support@internnova.co.in" class="hover:text-white transition-colors">support@internnova.co.in</a>
+            </p>
+            <p class="flex items-center gap-2">
+              <i class="fa-solid fa-phone text-indigo-400"></i>
+              <a href="tel:+919534196255" class="hover:text-white transition-colors">+91 95341 96255</a>
+            </p>
+            <p class="flex items-center gap-2 text-slate-500">
+              <i class="fa-solid fa-location-dot text-indigo-400"></i>
+              <span>Patna / Virtual Office, India</span>
+            </p>
+            <div class="pt-2">
+              <button onclick="openVerifyModal()" class="w-full py-2 px-3 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors">
+                <i class="fa-solid fa-shield-halved text-indigo-400"></i> Verify Certificate
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright & Legal -->
+      <div class="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <p>© 2026 InternNova (internnova.co.in). All rights reserved.</p>
+        <div class="flex items-center space-x-6">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-white transition-colors">Refund & Cancellation</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODAL 1: Certificate Verification Result & Demo Modal
+  ========================================================================== -->
+  <div id="verifyModal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-slate-100 overflow-hidden relative animate-in fade-in zoom-in duration-200">
+      
+      <!-- Modal Header -->
+      <div class="p-6 bg-slate-900 text-white flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white">
+            <i class="fa-solid fa-certificate"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white">Certificate Authentication System</h3>
+            <p class="text-[11px] text-slate-300">Ministry of MSME Registered Entity</p>
+          </div>
+        </div>
+        <button onclick="closeVerifyModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 space-y-5">
+        
+        <!-- Search Bar within Modal -->
+        <div class="flex gap-2">
+          <input 
+            type="text" 
+            id="modalCertInput" 
+            placeholder="Search ID (e.g. IN-2026-WD01)" 
+            class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          >
+          <button onclick="executeModalSearch()" class="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 transition-colors">
+            Search
+          </button>
+        </div>
+
+        <!-- Certificate Mock Presentation Container -->
+        <div id="certPreviewCard" class="p-6 rounded-2xl bg-gradient-to-br from-amber-50/40 via-white to-indigo-50/40 border-2 border-indigo-200/80 shadow-subtle relative space-y-4">
+          
+          <div class="flex items-start justify-between">
+            <div>
+              <span class="text-[10px] font-bold tracking-widest text-indigo-700 uppercase bg-indigo-100 px-2.5 py-0.5 rounded-full">
+                VERIFIED CREDENTIAL
+              </span>
+              <h4 id="certStudentName" class="text-xl font-extrabold text-slate-900 mt-2">Pooja Sharma</h4>
+              <p id="certTrackName" class="text-xs font-semibold text-indigo-600">Web Development Virtual Internship</p>
+            </div>
+            <!-- Verification QR mock -->
+            <div class="text-center">
+              <div class="w-16 h-16 bg-white border border-slate-200 rounded-lg p-1 flex items-center justify-center shadow-sm">
+                <i class="fa-solid fa-qrcode text-3xl text-slate-800"></i>
+              </div>
+              <span class="text-[9px] font-mono text-slate-500 mt-0.5 block">Scan to check</span>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-600 leading-relaxed">
+            This is to certify that the candidate has successfully developed and shipped 4 industry projects adhering to git code review standards during the 4-week cohort.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-3 border-t border-slate-200/60 text-xs">
+            <div>
+              <p class="text-[10px] text-slate-600 uppercase font-semibold">Credential ID</p>
+              <p id="certDisplayId" class="font-mono font-bold text-slate-900">IN-2026-WD01</p>
+            </div>
+            <div>
+              <p class="text-[10px] text-slate-600 uppercase font-semibold">Cohort Period</p>
+              <p id="certDisplayDate" class="font-bold text-slate-900">March 2026</p>
+            </div>
+            <div>
+              <p class="text-[10px] text-slate-600 uppercase font-semibold">MSME Reg Status</p>
+              <p class="font-bold text-emerald-600"><i class="fa-solid fa-check-circle"></i> Authenticated</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+        <span>Powered by InternNova Verification Core</span>
+        <button onclick="closeVerifyModal()" class="px-4 py-2 font-bold text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-100 transition-colors">
+          Close Preview
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: Student Application Form
+  ========================================================================== -->
+  <div id="applyModal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-100 overflow-hidden relative my-8 animate-in fade-in zoom-in duration-200">
+      
+      <!-- Modal Header -->
+      <div class="p-6 bg-gradient-to-r from-indigo-900 to-slate-950 text-white flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-300">Fast-Track Onboarding</span>
+          <h3 class="text-xl font-extrabold text-white">Apply for Internship</h3>
+          <p class="text-xs text-slate-300 mt-0.5">Batch-06 Applications currently processing</p>
+        </div>
+        <button onclick="closeApplyModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Application Form -->
+      <form id="studentApplicationForm" onsubmit="handleApplicationSubmit(event)" class="p-6 space-y-4">
+        
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase mb-1" for="applicantName">Full Name *</label>
+          <input 
+            type="text" 
+            id="applicantName" 
+            placeholder="e.g. Rahul Verma" 
+            required
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          >
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1" for="applicantEmail">Email Address *</label>
+            <input 
+              type="email" 
+              id="applicantEmail" 
+              placeholder="rahul@college.edu" 
+              required
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1" for="applicantPhone">Phone (WhatsApp) *</label>
+            <input 
+              type="tel" 
+              id="applicantPhone" 
+              placeholder="+91 98765 43210" 
+              required
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1" for="applicantDomain">Selected Domain *</label>
+            <select 
+              id="applicantDomain" 
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
+            >
+              <option value="Web Development">Web Development</option>
+              <option value="Python Programming">Python Programming</option>
+              <option value="Data Analytics">Data Analytics & BI</option>
+              <option value="AI & Machine Learning">AI & Machine Learning</option>
+              <option value="Cyber Security">Cyber Security</option>
+              <option value="Java Software Development">Java Software Dev</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1" for="applicantCollege">College / Degree *</label>
+            <input 
+              type="text" 
+              id="applicantCollege" 
+              placeholder="e.g. NIT Patna / B.Tech" 
+              required
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase mb-1" for="applicantYear">Year of Study</label>
+          <select 
+            id="applicantYear" 
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
+          >
+            <option value="1st Year">1st Year Undergraduate</option>
+            <option value="2nd Year" selected>2nd Year Undergraduate</option>
+            <option value="3rd Year">3rd Year Undergraduate</option>
+            <option value="Final Year">Final Year Undergraduate</option>
+            <option value="Recent Graduate">Recent Graduate</option>
+          </select>
+        </div>
+
+        <div class="p-3 bg-indigo-50 rounded-xl border border-indigo-100 text-xs text-indigo-900 flex items-start gap-2">
+          <i class="fa-solid fa-circle-info text-indigo-600 mt-0.5"></i>
+          <span>Official Offer Letter and dashboard access link will be sent to the registered email within 24 hours.</span>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" class="w-full py-3.5 rounded-xl font-bold text-white badge-gradient shadow-md shadow-indigo-600/30 hover:shadow-indigo-600/50 transition-all text-sm">
+            Submit Application
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Success Notification Box (Initially Hidden) -->
+      <div id="applicationSuccessBox" class="hidden p-8 text-center space-y-4">
+        <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <h4 class="text-xl font-extrabold text-slate-900">Application Received!</h4>
+        <p class="text-sm text-slate-600">
+          Thank you for applying. We have forwarded your confirmation details to <strong id="confirmedEmailDisplay" class="text-slate-800">your email</strong>. Please check your inbox for cohort instructions.
+        </p>
+        <button onclick="closeApplyModal()" class="px-6 py-2.5 rounded-xl font-bold text-xs bg-slate-900 text-white hover:bg-slate-800 transition-colors">
+          Return to Portal
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container for Quick Alerts -->
+  <div id="toastNotification" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-xl flex items-center gap-2 border border-slate-700">
+    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+    <span id="toastMessage">Action completed successfully!</span>
+  </div>
+
+  <!-- =========================================================================
+       JavaScript Logic & Interactivity
+  ========================================================================== -->
+  <script>
+    // Mock Database for Certificate Verification Demo
+    const mockCertificates = {
+      'IN-2026-WD01': {
+        name: 'Pooja Sharma',
+        domain: 'Web Development Internship',
+        date: 'March 2026',
+        rating: 'Grade A+ (Distinction)'
+      },
+      'IN-2026-WD892': {
+        name: 'Aakash Verma',
+        domain: 'Fullstack React Cohort',
+        date: 'February 2026',
+        rating: 'Grade A (Excellent)'
+      },
+      'IN-2026-DA45': {
+        name: 'Harsh Vardhan',
+        domain: 'Data Analytics & BI Track',
+        date: 'March 2026',
+        rating: 'Grade A+ (Distinction)'
+      },
+      'IN-2026-PY88': {
+        name: 'Karthik Krishnan',
+        domain: 'Python Development Track',
+        date: 'January 2026',
+        rating: 'Grade A (Excellent)'
+      }
+    };
+
+    // Mobile Hamburger Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.add('hidden');
+    }
+
+    // Domain Filtering Logic
+    function filterDomains(category) {
+      const cards = document.querySelectorAll('.domain-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      // Update button styles
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-category') === category) {
+          btn.classList.add('bg-indigo-600', 'text-white', 'shadow-sm');
+          btn.classList.remove('bg-white', 'text-slate-600');
+        } else {
+          btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-sm');
+          btn.classList.add('bg-white', 'text-slate-600');
+        }
+      });
+
+      // Show/Hide Cards
+      cards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        if (category === 'all' || cardCategory === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // FAQ Accordion Toggle
+    function toggleFaq(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('i');
+      const isHidden = content.classList.contains('hidden');
+
+      // Close all other FAQs
+      document.querySelectorAll('.faq-content').forEach(item => item.classList.add('hidden'));
+      document.querySelectorAll('.faq-item i').forEach(item => item.classList.remove('rotate-180'));
+
+      if (isHidden) {
+        content.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      }
+    }
+
+    // Modal Control: Certificate Verification
+    const verifyModal = document.getElementById('verifyModal');
+
+    function openVerifyModal() {
+      verifyModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVerifyModal() {
+      verifyModal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function simulateVerification(id) {
+      openVerifyModal();
+      document.getElementById('modalCertInput').value = id;
+      lookupCertificate(id);
+    }
+
+    function handleVerificationSubmit(e) {
+      e.preventDefault();
+      const query = document.getElementById('certInputHome').value.trim().toUpperCase();
+      simulateVerification(query);
+    }
+
+    function executeModalSearch() {
+      const query = document.getElementById('modalCertInput').value.trim().toUpperCase();
+      lookupCertificate(query);
+    }
+
+    function lookupCertificate(id) {
+      const record = mockCertificates[id];
+      const nameEl = document.getElementById('certStudentName');
+      const trackEl = document.getElementById('certTrackName');
+      const idEl = document.getElementById('certDisplayId');
+      const dateEl = document.getElementById('certDisplayDate');
+
+      if (record) {
+        nameEl.textContent = record.name;
+        trackEl.textContent = record.domain;
+        idEl.textContent = id;
+        dateEl.textContent = record.date;
+        showToast(`Verified credential for ${record.name}`);
+      } else {
+        // Fallback for custom random IDs
+        nameEl.textContent = "Candidate Verified";
+        trackEl.textContent = "Technology Internship Track";
+        idEl.textContent = id || "IN-2026-VAL01";
+        dateEl.textContent = "Active Record";
+        showToast(`Verified valid ID: ${id}`);
+      }
+    }
+
+    // Modal Control: Application Form
+    const applyModal = document.getElementById('applyModal');
+    const studentForm = document.getElementById('studentApplicationForm');
+    const applicationSuccessBox = document.getElementById('applicationSuccessBox');
+
+    function openApplyModal(selectedDomain) {
+      applyModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      studentForm.classList.remove('hidden');
+      applicationSuccessBox.classList.add('hidden');
+      
+      if (selectedDomain && selectedDomain !== 'General Cohort' && selectedDomain !== 'Priority Access' && selectedDomain !== 'Direct CTA') {
+        const domainSelect = document.getElementById('applicantDomain');
+        for (let i = 0; i < domainSelect.options.length; i++) {
+          if (domainSelect.options[i].value.toLowerCase().includes(selectedDomain.toLowerCase())) {
+            domainSelect.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    }
+
+    function closeApplyModal() {
+      applyModal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function handleApplicationSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('applicantEmail').value;
+      const name = document.getElementById('applicantName').value;
+      
+      // Toggle form to success box
+      studentForm.classList.add('hidden');
+      document.getElementById('confirmedEmailDisplay').textContent = email;
+      applicationSuccessBox.classList.remove('hidden');
+      
+      showToast(`Welcome aboard, ${name}! Check email.`);
+    }
+
+    // Workshop Register quick feedback
+    function registerWorkshop(workshopTitle) {
+      showToast(`Registered for ${workshopTitle}! Check email.`);
+    }
+
+    // Toast Utility
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const toastMessage = document.getElementById('toastMessage');
+      toastMessage.textContent = message;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3500);
+    }
+
+    // Close modals on clicking overlay background
+    window.onclick = function(event) {
+      if (event.target === verifyModal) {
+        closeVerifyModal();
+      }
+      if (event.target === applyModal) {
+        closeApplyModal();
+      }
+    };
+  </script>
+</body>
+</html>
